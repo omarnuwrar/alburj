@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>مصنع البرج لصناعة الخزانات البلاستيكية - جودة وابتكار</title>
-
-    <!-- Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="burj.png">
-    <link rel="apple-touch-icon" href="burj.png">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet"></noscript>
-
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+        <title>مصنع البرج لصناعة الخزانات البلاستيكية - جودة وابتكار</title>
+    
+        <!-- Preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="burj.png">
+        <link rel="apple-touch-icon" href="burj.png">
+    
+        <!-- Preload Critical Images -->
+        <link rel="preload" as="image" href="burj.png">
+        <link rel="preload" as="image" href="tank.png">
+        <link rel="preload" as="image" href="burj2.png">
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+        <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+        <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet"></noscript>
     <style>
         /* ========== RESET & BASE ========== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
 
         :root {
             --primary-color: #0066cc;
@@ -59,6 +70,13 @@
             line-height: 1.7;
             min-height: 100vh;
             min-height: -webkit-fill-available;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        body.loaded {
+            visibility: visible;
+            opacity: 1;
         }
 
         /* ========== LOADER ========== */
@@ -2067,31 +2085,94 @@
     </footer>
 
     <script>
-        // ========== LOADER ==========
-        document.addEventListener('DOMContentLoaded', function() {
-            if (document.fonts) {
-                document.fonts.ready.then(function() {
-                    setTimeout(function() {
-                        document.getElementById('loader').classList.add('hidden');
-                    }, 800);
+        // ========== IMPROVED LOADER WITH IMAGE PRELOADING ==========
+        let imagesLoaded = false;
+        let fontsLoaded = false;
+    
+        // Preload all critical images
+        const criticalImages = [
+            'burj.png',
+            'tank.png',
+            'burj2.png',
+            'drink_tank.png',
+            'factory_tank.png',
+            'land_tank.png',
+            'up_tank.png',
+            'farm_tank.png',
+            'made_tank.png'
+        ];
+    
+        let loadedImagesCount = 0;
+        const totalImages = criticalImages.length;
+    
+        function preloadImages() {
+            return new Promise((resolve) => {
+                if (totalImages === 0) {
+                    resolve();
+                    return;
+                }
+    
+                criticalImages.forEach(src => {
+                    const img = new Image();
+                    img.onload = img.onerror = () => {
+                        loadedImagesCount++;
+                        if (loadedImagesCount === totalImages) {
+                            imagesLoaded = true;
+                            checkAllLoaded();
+                        }
+                    };
+                    img.src = src;
                 });
-            } else {
-                setTimeout(function() {
+    
+                // Fallback timeout
+                setTimeout(() => {
+                    imagesLoaded = true;
+                    checkAllLoaded();
+                }, 5000);
+            });
+        }
+    
+        // Check fonts loading
+        if (document.fonts) {
+            document.fonts.ready.then(() => {
+                fontsLoaded = true;
+                checkAllLoaded();
+            });
+        } else {
+            setTimeout(() => {
+                fontsLoaded = true;
+                checkAllLoaded();
+            }, 2000);
+        }
+    
+        // Check if everything is loaded
+        function checkAllLoaded() {
+            if (imagesLoaded && fontsLoaded) {
+                setTimeout(() => {
                     document.getElementById('loader').classList.add('hidden');
-                }, 1500);
+                    document.body.classList.add('loaded');
+                }, 500);
             }
+        }
+    
+        // Start preloading
+        document.addEventListener('DOMContentLoaded', () => {
+            preloadImages();
         });
-
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('loader').classList.add('hidden');
-            }, 500);
+    
+        // Fallback for slow connections
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                imagesLoaded = true;
+                fontsLoaded = true;
+                checkAllLoaded();
+            }, 1000);
         });
-
+    
         // ========== MOBILE MENU ==========
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
-
+    
         menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
             const icon = this.querySelector('i');
@@ -2103,7 +2184,7 @@
                 icon.classList.add('fa-bars');
             }
         });
-
+    
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function() {
@@ -2113,12 +2194,12 @@
                 icon.classList.add('fa-bars');
             });
         });
-
+    
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             const isClickInsideNav = navLinks.contains(event.target);
             const isClickOnToggle = menuToggle.contains(event.target);
-
+    
             if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 const icon = menuToggle.querySelector('i');
@@ -2126,10 +2207,10 @@
                 icon.classList.add('fa-bars');
             }
         });
-
+    
         // ========== SCROLL TO TOP ==========
         const scrollTopBtn = document.getElementById('scrollTop');
-
+    
         window.addEventListener('scroll', function() {
             if (window.scrollY > 400) {
                 scrollTopBtn.classList.add('active');
@@ -2137,14 +2218,14 @@
                 scrollTopBtn.classList.remove('active');
             }
         });
-
+    
         scrollTopBtn.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-
+    
         // ========== SMOOTH SCROLLING ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2160,10 +2241,10 @@
                 }
             });
         });
-
+    
         // ========== FADE IN ANIMATION ==========
         const fadeElements = document.querySelectorAll('.fade-in');
-
+    
         const fadeInObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -2174,15 +2255,15 @@
             threshold: 0.1,
             rootMargin: '0px 0px -80px 0px'
         });
-
+    
         fadeElements.forEach(element => {
             fadeInObserver.observe(element);
         });
-
+    
         // ========== COUNTER ANIMATION ==========
         const statNumbers = document.querySelectorAll('.stat-number');
         let hasAnimated = false;
-
+    
         const animateCounter = (element) => {
             const text = element.textContent;
             const target = parseInt(text.replace(/\D/g, ''));
@@ -2190,7 +2271,7 @@
             const duration = 2500;
             const increment = target / (duration / 16);
             let current = 0;
-
+    
             const updateCounter = () => {
                 current += increment;
                 if (current < target) {
@@ -2200,10 +2281,10 @@
                     element.textContent = target + suffix;
                 }
             };
-
+    
             updateCounter();
         };
-
+    
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting && !hasAnimated) {
@@ -2216,70 +2297,81 @@
         }, {
             threshold: 0.5
         });
-
+    
         const statsSection = document.querySelector('.stats');
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
-
+    
         // ========== FORM SUBMISSION ==========
         const contactForm = document.getElementById('contactForm');
-
+    
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
+    
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-
-            // Create WhatsApp message
+    
             const whatsappMessage = `*رسالة جديدة من الموقع*%0A%0A*الاسم:* ${name}%0A*الهاتف:* ${phone}%0A*البريد:* ${email}%0A*الرسالة:* ${message}`;
-
-            // Open WhatsApp
+    
             window.open(`https://wa.me/218922151548?text=${whatsappMessage}`, '_blank');
-
-            // Reset form
+    
             contactForm.reset();
-
-            // Show success message
+    
             alert('شكراً لتواصلك معنا! سيتم فتح واتساب لإرسال رسالتك.');
         });
-
-        // ========== IMAGE LOADING ==========
-        document.querySelectorAll('img').forEach(img => {
-            img.style.transition = 'opacity 0.5s ease';
-
-            if (img.complete && img.naturalHeight !== 0) {
-                img.style.opacity = '1';
-            } else {
-                img.style.opacity = '0';
-                img.addEventListener('load', function() {
-                    this.style.opacity = '1';
+    
+        // ========== PRODUCT CARD TILT EFFECT (Mobile Safe) ==========
+        const productCards = document.querySelectorAll('.product-card');
+    
+        // Only enable tilt on non-touch devices
+        if (!('ontouchstart' in window)) {
+            productCards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+    
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
                 });
-
-                setTimeout(() => {
-                    img.style.opacity = '1';
-                }, 2000);
-            }
-        });
-
-        // ========== ERROR HANDLING FOR IMAGES ==========
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function() {
-                if (this.src.includes('tank.png') || this.src.includes('burj.png')) {
-                    return;
-                }
-                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23f0f0f0" width="400" height="300"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-family="Arial"%3Eمصنع البرج%3C/text%3E%3C/svg%3E';
-                this.style.objectFit = 'contain';
-                this.style.opacity = '1';
+    
+                card.addEventListener('mouseleave', function() {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+                });
             });
-        });
-
+        }
+    
+        // ========== PARALLAX EFFECT (Mobile Safe) ==========
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const heroTank = document.querySelector('.hero-tank');
+                const heroCircles = document.querySelectorAll('.hero-circle');
+    
+                if (heroTank && scrolled < 1000) {
+                    heroTank.style.transform = `translateY(${scrolled * 0.3}px)`;
+                }
+    
+                heroCircles.forEach((circle, index) => {
+                    if (scrolled < 1000) {
+                        circle.style.transform = `translateY(${scrolled * (0.1 + index * 0.05)}px)`;
+                    }
+                });
+            });
+        }
+    
         // ========== ACTIVE NAV LINK ==========
         const sections = document.querySelectorAll('section[id]');
         const navLinksItems = document.querySelectorAll('.nav-links a');
-
+    
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
@@ -2289,7 +2381,7 @@
                     current = section.getAttribute('id');
                 }
             });
-
+    
             navLinksItems.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').slice(1) === current) {
@@ -2297,91 +2389,25 @@
                 }
             });
         });
-
-        // ========== PARALLAX EFFECT FOR HERO ==========
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const heroTank = document.querySelector('.hero-tank');
-            const heroCircles = document.querySelectorAll('.hero-circle');
-
-            if (heroTank && scrolled < 1000) {
-                heroTank.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-
-            heroCircles.forEach((circle, index) => {
-                if (scrolled < 1000) {
-                    circle.style.transform = `translateY(${scrolled * (0.1 + index * 0.05)}px)`;
-                }
-            });
-        });
-
-        // ========== PRODUCT CARD TILT EFFECT ==========
-        const productCards = document.querySelectorAll('.product-card');
-
-        productCards.forEach(card => {
-            card.addEventListener('mousemove', function(e) {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
-            });
-
-            card.addEventListener('mouseleave', function() {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-
-        // ========== CONSOLE MESSAGE ==========
-        console.log('%c مصنع البرج ', 'background: #0066cc; color: white; font-size: 24px; padding: 12px; font-weight: bold;');
-        console.log('%c لصناعة الخزانات البلاستيكية ', 'background: #003d82; color: white; font-size: 18px; padding: 10px;');
-        console.log('%c جودة عالمية • تصنيع محلي • أسعار منافسة ', 'background: #ff6b35; color: white; font-size: 14px; padding: 8px;');
-
-        // ========== PERFORMANCE OPTIMIZATION ==========
-        // Lazy load images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        observer.unobserve(img);
-                    }
-                });
-            });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }
-
+    
         // ========== REVEAL ON SCROLL ==========
         function reveal() {
             fadeElements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
-
+    
                 if (elementTop < window.innerHeight - elementVisible) {
                     element.classList.add('visible');
                 }
             });
         }
-
+    
         window.addEventListener('scroll', reveal);
         document.addEventListener('DOMContentLoaded', reveal);
-
-        // ========== PREVENT FOUC ==========
-        document.body.style.visibility = 'visible';
-        document.body.style.opacity = '1';
+    
+        // ========== CONSOLE MESSAGE ==========
+        console.log('%c مصنع البرج ', 'background: #0066cc; color: white; font-size: 24px; padding: 12px; font-weight: bold;');
+        console.log('%c لصناعة الخزانات البلاستيكية ', 'background: #003d82; color: white; font-size: 18px; padding: 10px;');
     </script>
 </body>
 </html>
