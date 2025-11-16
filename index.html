@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>مصنع البرج لصناعة الخزانات البلاستيكية - جودة وابتكار</title>
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="burj.png">
+    <link rel="apple-touch-icon" href="burj.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet"></noscript>
+
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #00a8e8;
+            --dark-blue: #003d82;
+            --accent-orange: #ff6b35;
+            --dark-gray: #1a1a2e;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --gradient-primary: linear-gradient(135deg, #0066cc 0%, #00a8e8 100%);
+            --gradient-dark: linear-gradient(135deg, #1a1a2e 0%, #003d82 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            height: 100%;
+            height: -webkit-fill-available;
+        }
+
+        body {
+            font-family: 'Cairo', 'Tajawal', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+        }
+
+        /* ========== LOADER ========== */
+        .loader {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: var(--gradient-dark) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            z-index: 99999 !important;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            position: relative;
+        }
+
+        .loader-logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 30px;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .loader-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 30px rgba(255, 255, 255, 0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .loader-spinner {
+            width: 80px;
+            height: 80px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-top-color: var(--accent-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 25px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader-text {
+            font-size: 22px;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .loader-subtext {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 10px;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background: var(--white);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .header-top {
+            background: var(--gradient-primary);
+            padding: 10px 0;
+            color: var(--white);
+            font-size: 14px;
+        }
+
+        .header-top-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-contact {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .header-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-contact-item i {
+            font-size: 16px;
+        }
+
+        .header-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .header-social a {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .header-social a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .logo-container img {
+            height: 70px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .company-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .company-info h1 {
+            font-size: 24px;
+            color: var(--dark-blue);
+            font-weight: 900;
+            margin-bottom: 3px;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .company-info span {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 17px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--dark-blue);
+            z-index: 1001;
+        }
+
+        /* ========== HERO SECTION ========== */
+        .hero {
+            margin-top: 130px;
+            min-height: 90vh;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 80px 30px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=1600') center/cover;
+            opacity: 0.08;
+            z-index: 0;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.03) 35px, rgba(255,255,255,.03) 70px);
+            z-index: 1;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 0 15px rgba(255, 107, 53, 0);
+            }
+        }
+
+        .hero-title {
+            font-size: 56px;
+            color: var(--white);
+            margin-bottom: 25px;
+            font-weight: 900;
+            line-height: 1.2;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .hero-title .highlight {
+            color: var(--accent-orange);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .hero-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 35px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #ff5722;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-tank {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
+            animation: floatTank 6s ease-in-out infinite;
+        }
+
+        @keyframes floatTank {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(2deg);
+            }
+        }
+
+        .hero-decorations {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .hero-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: 2s;
+        }
+
+        .hero-circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 10%;
+            animation-delay: 4s;
+        }
+
+        /* ========== FEATURES SECTION ========== */
+        .features {
+            padding: 100px 30px;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            color: var(--dark-blue);
+            margin-bottom: 20px;
+            font-weight: 900;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .section-description {
+            font-size: 19px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 45px 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 40px;
+            color: var(--white);
+            transition: all 0.4s ease;
+            transform: rotate(0deg);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        .about {
+            padding: 100px 30px;
+            background: var(--white);
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+        }
+
+        .about-main-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 30px;
+            object-fit: cover;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-floating-card {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            max-width: 250px;
+        }
+
+        .about-floating-card h4 {
+            font-size: 48px;
+            color: var(--accent-orange);
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .about-floating-card p {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .about-content h2 {
+            font-size: 42px;
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+            font-weight: 900;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .about-content p {
+            font-size: 17px;
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.9;
+        }
+
+        .about-features {
+            display: grid;
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .about-feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 20px;
+            background: var(--light-gray);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .about-feature-item:hover {
+            background: var(--gradient-primary);
+            transform: translateX(-10px);
+        }
+
+        .about-feature-item:hover .about-feature-icon {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        .about-feature-item:hover .about-feature-text h4,
+        .about-feature-item:hover .about-feature-text p {
+            color: var(--white);
+        }
+
+        .about-feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: var(--white);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .about-feature-text h4 {
+            font-size: 19px;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .about-feature-text p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        /* ========== PRODUCTS SECTION ========== */
+        .products {
+            padding: 100px 30px;
+            background: var(--light-gray);
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            height: 280px;
+            background: var(--gradient-primary);
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-orange);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .product-content {
+            padding: 35px 30px;
+        }
+
+        .product-content h3 {
+            font-size: 24px;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .product-content p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .product-specs {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
+        .product-spec {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .product-spec i {
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .product-link:hover {
+            gap: 15px;
+            color: var(--accent-orange);
+        }
+
+        /* ========== STATS SECTION ========== */
+        .stats {
+            padding: 100px 30px;
+            background: var(--gradient-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1600') center/cover;
+            opacity: 0.05;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+            border-color: var(--accent-orange);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+            color: var(--white);
+        }
+
+        .stat-number {
+            font-size: 52px;
+            color: var(--white);
+            font-weight: 900;
+            margin-bottom: 10px;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        /* ========== CONTACT SECTION ========== */
+        .contact {
+            padding: 100px 30px;
+            background: var(--white);
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-size: 42px;
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+            font-weight: 900;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .contact-cards {
+            display: grid;
+            gap: 25px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background: var(--gradient-primary);
+            transform: translateX(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card:hover .contact-card-icon {
+            background: var(--white);
+            color: var(--primary-color);
+
+        }
+        
+        .contact-card:hover .contact-card-content h4,
+        .contact-card:hover .contact-card-content p,
+        .contact-card:hover .contact-card-content a {
+            color: var(--white);
+        }
+
+        .contact-card-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--white);
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card-content h4 {
+            font-size: 20px;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card-content p,
+        .contact-card-content a {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-card-content a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form-wrapper {
+            background: var(--light-gray);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-form-wrapper h3 {
+            font-size: 32px;
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+        }
+
+        /* ========== MAP SECTION ========== */
+        .map-section {
+            padding: 0;
+            background: var(--light-gray);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: var(--dark-gray);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 80px 30px 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-section h3 {
+            font-size: 22px;
+            color: var(--white);
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .footer-about {
+            padding-left: 20px;
+        }
+
+        .footer-logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo-section img {
+            height: 80px;
+            width: auto;
+        }
+
+        .footer-logo-text {
+            font-size: 24px;
+            color: var(--white);
+            font-weight: 900;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .footer-about p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+            padding-right: 10px;
+        }
+
+        .footer-links a i {
+            font-size: 12px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ========== FLOATING ELEMENTS ========== */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
+
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 34px;
+            text-decoration: none;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            transition: all 0.3s ease;
+            animation: whatsappPulse 2s infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0%, 100% {
+                box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+            }
+            50% {
+                box-shadow: 0 6px 35px rgba(37, 211, 102, 0.8);
+            }
+        }
+
+        .whatsapp-float a:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.7);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 22px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .header-top {
+                display: none;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .logo-container img {
+                height: 55px;
+            }
+
+            .company-info h1 {
+                font-size: 18px;
+            }
+
+            .company-info span {
+                font-size: 11px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                padding: 100px 30px 30px;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.4s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                padding: 20px 0;
+                border-bottom: 1px solid var(--light-gray);
+            }
+
+            .nav-links a {
+                font-size: 19px;
+                display: block;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                margin-top: 85px;
+                padding: 60px 20px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .hero-tank {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .features,
+            .about,
+            .products,
+            .stats,
+            .contact {
+                padding: 70px 20px;
+            }
+
+            .about-floating-card {
+                position: static;
+                margin-top: 20px;
+                max-width: 100%;
+            }
+
+            .contact-form-wrapper {
+                padding: 35px 25px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .whatsapp-float {
+                bottom: 20px;
+                left: 20px;
+            }
+
+            .whatsapp-float a {
+                width: 58px;
+                height: 58px;
+                font-size: 30px;
+            }
+
+            .scroll-top {
+                bottom: 90px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .features-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <img src="burj.png" alt="مصنع البرج">
+            </div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">جاري التحميل</div>
+            <div class="loader-subtext">مصنع البرج لصناعة الخزانات البلاستيكية</div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/218922151548" target="_blank" title="تواصل معنا عبر واتساب">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        
+        <nav>
+            <div class="logo-container">
+                <img src="burj.png" alt="مصنع البرج">
+                <div class="company-info">
+                    <h1>مصنع البرج</h1>
+                    <span>لصناعة الخزانات البلاستيكية</span>
+                </div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#contact">اتصل بنا</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-pattern"></div>
+        <div class="hero-decorations">
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+            <div class="hero-circle"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge"> الرائدون في صناعة الخزانات</span>
+                <h2 class="hero-title">
+                    مصنع <span class="highlight">البرج</span><br>
+                    لصناعة الخزانات البلاستيكية
+                </h2>
+                <p class="hero-subtitle">جودة عالمية • تصنيع محلي • أسعار منافسة</p>
+                <p class="hero-description">
+                    نفخر بتقديم أفضل الخزانات البلاستيكية المصنعة بأحدث التقنيات العالمية، مع ضمان الجودة والمتانة لسنوات طويلة. نخدم جميع أنحاء ليبيا بمنتجات تلبي أعلى معايير الجودة والسلامة.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-box-open"></i>
+                        تصفح المنتجات
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-phone-alt"></i>
+                        تواصل معنا
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="tank.png" alt="خزانات البرج" class="hero-tank">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <span class="section-badge">لماذا نحن</span>
+                <h2 class="section-title">مميزات مصنع البرج</h2>
+                <p class="section-description">
+                    نقدم لكم أفضل الحلول في صناعة الخزانات البلاستيكية بجودة عالية وأسعار تنافسية
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>جودة معتمدة</h3>
+                    <p>منتجاتنا مصنوعة من أجود أنواع البلاستيك المقاوم للعوامل الجوية والتآكل، مع شهادات جودة معتمدة</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>تصنيع محلي</h3>
+                    <p>نفخر بكوننا مصنع ليبي 100% يساهم في دعم الاقتصاد الوطني وتوفير فرص عمل للشباب الليبي</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>ضمان طويل</h3>
+                    <p>نوفر ضمان شامل على جميع منتجاتنا لضمان راحة بالك وثقتك في جودة خزاناتنا</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>توصيل سريع</h3>
+                    <p>خدمة توصيل سريعة وآمنة لجميع أنحاء ليبيا مع فريق محترف ومتخصص</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>أسعار منافسة</h3>
+                    <p>نقدم أفضل الأسعار في السوق الليبي مع الحفاظ على أعلى معايير الجودة</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم فني متميز</h3>
+                    <p>فريق دعم فني متاح دائماً للإجابة على استفساراتكم وتقديم الاستشارات المجانية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-images fade-in">
+                <img src="burj2.png" alt="مصنع البرج" class="about-main-image">
+                <div class="about-floating-card">
+                    <h4>+15</h4>
+                    <p>سنة من الخبرة والتميز</p>
+                </div>
+            </div>
+            <div class="about-content fade-in">
+                <h2>من نحن</h2>
+                <p>
+                    مصنع البرج هو أحد المصانع الرائدة في ليبيا في مجال صناعة الخزانات البلاستيكية بمختلف الأحجام والأشكال. تأسس المصنع بهدف توفير منتجات عالية الجودة تلبي احتياجات السوق الليبي.
+                </p>
+                <p>
+                    نستخدم أحدث التقنيات والمعدات في عملية التصنيع، مع الالتزام بأعلى معايير الجودة والسلامة. فريقنا من المهندسين والفنيين المتخصصين يعمل بجد لضمان تقديم منتجات تفوق توقعات عملائنا.
+                </p>
+                <div class="about-features">
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4>مواد خام عالية الجودة</h4>
+                            <p>نستورد أفضل أنواع البلاستيك المقاوم للحرارة والأشعة فوق البنفسجية</p>
+                        </div>
+                    </div>
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4>تقنيات تصنيع حديثة</h4>
+                            <p>نستخدم أحدث الآلات والتقنيات في عملية التصنيع والإنتاج</p>
+                        </div>
+                    </div>
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4>فحص دقيق للجودة</h4>
+                            <p>كل منتج يخضع لفحص دقيق قبل التسليم لضمان أعلى معايير الجودة</p>
+                        </div>
+                    </div>
+                    <div class="about-feature-item">
+                        <div class="about-feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="about-feature-text">
+                            <h4>خدمة ما بعد البيع</h4>
+                            <p>نوفر خدمة متابعة وصيانة دورية لضمان رضا عملائنا الكامل</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="products-container">
+            <div class="section-header">
+                <span class="section-badge">منتجاتنا</span>
+                <h2 class="section-title">خزانات بجميع الأحجام</h2>
+                <p class="section-description">
+                    نوفر مجموعة واسعة من الخزانات البلاستيكية لتلبية جميع احتياجاتكم
+                </p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image-wrapper">
+                        <img src="drink_tank.png" alt="خزانات مياه" class="product-image">
+                        <span class="product-badge">الأكثر مبيعاً</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>خزانات مياه الشرب</h3>
+                        <p>خزانات مياه صحية مصنوعة من مواد آمنة ومعتمدة للاستخدام البشري، متوفرة بأحجام من 500 لتر إلى 10,000 لتر</p>
+                        <div class="product-specs">
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                مقاوم للأشعة UV
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                آمن صحياً
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                ضمان 5 سنوات
+                            </span>
+                        </div>
+                        <a href="#contact" class="product-link">
+                            اطلب الآن
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image-wrapper">
+                        <img src="factory_tank.png" alt="خزانات صناعية" class="product-image">
+                        <span class="product-badge">جودة عالية</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>خزانات صناعية</h3>
+                        <p>خزانات مخصصة للاستخدامات الصناعية والزراعية، بسعات كبيرة تصل إلى 20,000 لتر، مقاومة للمواد الكيميائية</p>
+                        <div class="product-specs">
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                مقاوم للكيماويات
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                سعات كبيرة
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                متين جداً
+                            </span>
+                        </div>
+                        <a href="#contact" class="product-link">
+                            اطلب الآن
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image-wrapper">
+                        <img src="land_tank.png" alt="خزانات أرضية" class="product-image">
+                        <span class="product-badge">تصميم خاص</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>خزانات أرضية</h3>
+                        <p>خزانات مصممة خصيصاً للتركيب الأرضي، مثالية للمساحات المحدودة، متوفرة بأشكال وأحجام متنوعة حسب الطلب</p>
+                        <div class="product-specs">
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                توفير المساحة
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                تصميم مخصص
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                سهل التركيب
+                            </span>
+                        </div>
+                        <a href="#contact" class="product-link">
+                            اطلب الآن
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image-wrapper">
+                        <img src="up_tank.png" alt="خزانات علوية" class="product-image">
+                        <span class="product-badge">موصى به</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>خزانات علوية</h3>
+                        <p>خزانات مصممة للتركيب على الأسطح، خفيفة الوزن وقوية، مع قاعدة متينة تضمن الثبات والأمان</p>
+                        <div class="product-specs">
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                خفيف الوزن
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                قاعدة قوية
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                آمن ومستقر
+                            </span>
+                        </div>
+                        <a href="#contact" class="product-link">
+                            اطلب الآن
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image-wrapper">
+                        <img src="farm_tank.png" alt="خزانات زراعية" class="product-image">
+                        <span class="product-badge">للمزارع</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>خزانات زراعية</h3>
+                        <p>خزانات مخصصة للاستخدام الزراعي، مقاومة للعوامل الجوية القاسية، بسعات تناسب المزارع الصغيرة والكبيرة</p>
+                        <div class="product-specs">
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                مقاوم للطقس
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                سعات متنوعة
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                اقتصادي
+                            </span>
+                        </div>
+                        <a href="#contact" class="product-link">
+                            اطلب الآن
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card fade-in">
+                    <div class="product-image-wrapper">
+                        <img src="made_tank.png" alt="خزانات حسب الطلب" class="product-image">
+                        <span class="product-badge">حسب الطلب</span>
+                    </div>
+                    <div class="product-content">
+                        <h3>خزانات حسب الطلب</h3>
+                        <p>نوفر خدمة تصنيع خزانات حسب المواصفات والأحجام التي تحتاجها، مع إمكانية اختيار اللون والشكل</p>
+                        <div class="product-specs">
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                تصميم خاص
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                أي حجم
+                            </span>
+                            <span class="product-spec">
+                                <i class="fas fa-check"></i>
+                                ألوان متعددة
+                            </span>
+                        </div>
+                        <a href="#contact" class="product-link">
+                            اطلب الآن
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">عميل راضٍ</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fas fa-box"></i>
+                </div>
+                <div class="stat-number">15000+</div>
+                <div class="stat-label">خزان مُنتج</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div class="stat-number">15+</div>
+                <div class="stat-label">سنة خبرة</div>
+            </div>
+            <div class="stat-item fade-in">
+                <div class="stat-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="stat-number">100%</div>
+                <div class="stat-label">تغطية ليبيا</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info fade-in">
+                <h2>تواصل معنا</h2>
+                <p>نحن هنا للإجابة على جميع استفساراتكم وتلبية طلباتكم. تواصلوا معنا عبر أي من الوسائل التالية</p>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>اتصل بنا</h4>
+                            <p><a href="tel:+218922151548">0922151548</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>البريد الإلكتروني</h4>
+                            <p><a href="mailto:alburjfactoryzlt@gmail.com">alburjfactoryzlt@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>الموقع</h4>
+                            <p>ليبيا - زليتن<br>منطقة الصناعية</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h4>ساعات العمل</h4>
+                            <p>السبت - الخميس<br>8:00 ص - 5:00 م</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrapper fade-in">
+                <h3>أرسل لنا رسالة</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" required placeholder="أدخل اسمك الكامل">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="أدخل رقم هاتفك">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" placeholder="أدخل بريدك الإلكتروني">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" name="message" required placeholder="اكتب رسالتك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        إرسال الرسالة
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3368.532465492269!2d14.594175104507455!3d32.40489239622147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzLCsDI0JzE2LjgiTiAxNMKwMzUnMzQuMiJF!5e0!3m2!1sar!2sus!4v1763296267414!5m2!1sar!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section footer-about">
+                <div class="footer-logo-section">
+                    <img src="burj.png" alt="مصنع البرج">
+                    <div class="footer-logo-text">مصنع البرج</div>
+                </div>
+                <p>
+                    مصنع البرج لصناعة الخزانات البلاستيكية هو الخيار الأمثل للحصول على خزانات عالية الجودة بأسعار منافسة. نفخر بخدمة عملائنا في جميع أنحاء ليبيا.
+                </p>
+                <div class="footer-social">
+                    <a href="https://wa.me/218922151548" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:alburjfactoryzlt@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                    <li><a href="#products"><i class="fas fa-chevron-left"></i> المنتجات</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>منتجاتنا</h3>
+                <ul class="footer-links">
+                    <li><a href="#products"><i class="fas fa-chevron-left"></i> خزانات مياه الشرب</a></li>
+                    <li><a href="#products"><i class="fas fa-chevron-left"></i> خزانات صناعية</a></li>
+                    <li><a href="#products"><i class="fas fa-chevron-left"></i> خزانات أرضية</a></li>
+                    <li><a href="#products"><i class="fas fa-chevron-left"></i> خزانات علوية</a></li>
+                    <li><a href="#products"><i class="fas fa-chevron-left"></i> خزانات زراعية</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات الاتصال</h3>
+                <ul class="footer-links">
+                    <li><a href="tel:+218922151548"><i class="fas fa-phone"></i> 0922151548</a></li>
+                    <li><a href="mailto:alburjfactoryzlt@gmail.com"><i class="fas fa-envelope"></i> alburjfactoryzlt@gmail.com</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> ليبيا - زليتن - المنطقة الصناعية</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> السبت - الخميس: 8:00 ص - 5:00 م</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 مصنع البرج لصناعة الخزانات البلاستيكية. جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========== LOADER ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.fonts) {
+                document.fonts.ready.then(function() {
+                    setTimeout(function() {
+                        document.getElementById('loader').classList.add('hidden');
+                    }, 800);
+                });
+            } else {
+                setTimeout(function() {
+                    document.getElementById('loader').classList.add('hidden');
+                }, 1500);
+            }
+        });
+
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+            }, 500);
+        });
+
+        // ========== MOBILE MENU ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = navLinks.contains(event.target);
+            const isClickOnToggle = menuToggle.contains(event.target);
+
+            if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // ========== SCROLL TO TOP ==========
+        const scrollTopBtn = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ========== SMOOTH SCROLLING ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // ========== FADE IN ANIMATION ==========
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+
+        // ========== COUNTER ANIMATION ==========
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let hasAnimated = false;
+
+        const animateCounter = (element) => {
+            const text = element.textContent;
+            const target = parseInt(text.replace(/\D/g, ''));
+            const suffix = text.replace(/[0-9]/g, '');
+            const duration = 2500;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current) + suffix;
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target + suffix;
+                }
+            };
+
+            updateCounter();
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    statNumbers.forEach(stat => {
+                        animateCounter(stat);
+                    });
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // ========== FORM SUBMISSION ==========
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Create WhatsApp message
+            const whatsappMessage = `*رسالة جديدة من الموقع*%0A%0A*الاسم:* ${name}%0A*الهاتف:* ${phone}%0A*البريد:* ${email}%0A*الرسالة:* ${message}`;
+
+            // Open WhatsApp
+            window.open(`https://wa.me/218922151548?text=${whatsappMessage}`, '_blank');
+
+            // Reset form
+            contactForm.reset();
+
+            // Show success message
+            alert('شكراً لتواصلك معنا! سيتم فتح واتساب لإرسال رسالتك.');
+        });
+
+        // ========== IMAGE LOADING ==========
+        document.querySelectorAll('img').forEach(img => {
+            img.style.transition = 'opacity 0.5s ease';
+
+            if (img.complete && img.naturalHeight !== 0) {
+                img.style.opacity = '1';
+            } else {
+                img.style.opacity = '0';
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                }, 2000);
+            }
+        });
+
+        // ========== ERROR HANDLING FOR IMAGES ==========
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', function() {
+                if (this.src.includes('tank.png') || this.src.includes('burj.png')) {
+                    return;
+                }
+                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23f0f0f0" width="400" height="300"/%3E%3Ctext fill="%23999" x="50%25" y="50%25" text-anchor="middle" dy=".3em" font-family="Arial"%3Eمصنع البرج%3C/text%3E%3C/svg%3E';
+                this.style.objectFit = 'contain';
+                this.style.opacity = '1';
+            });
+        });
+
+        // ========== ACTIVE NAV LINK ==========
+        const sections = document.querySelectorAll('section[id]');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinksItems.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // ========== PARALLAX EFFECT FOR HERO ==========
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroTank = document.querySelector('.hero-tank');
+            const heroCircles = document.querySelectorAll('.hero-circle');
+
+            if (heroTank && scrolled < 1000) {
+                heroTank.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+
+            heroCircles.forEach((circle, index) => {
+                if (scrolled < 1000) {
+                    circle.style.transform = `translateY(${scrolled * (0.1 + index * 0.05)}px)`;
+                }
+            });
+        });
+
+        // ========== PRODUCT CARD TILT EFFECT ==========
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+            });
+
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // ========== CONSOLE MESSAGE ==========
+        console.log('%c مصنع البرج ', 'background: #0066cc; color: white; font-size: 24px; padding: 12px; font-weight: bold;');
+        console.log('%c لصناعة الخزانات البلاستيكية ', 'background: #003d82; color: white; font-size: 18px; padding: 10px;');
+        console.log('%c جودة عالمية • تصنيع محلي • أسعار منافسة ', 'background: #ff6b35; color: white; font-size: 14px; padding: 8px;');
+
+        // ========== PERFORMANCE OPTIMIZATION ==========
+        // Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // ========== REVEAL ON SCROLL ==========
+        function reveal() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        document.addEventListener('DOMContentLoaded', reveal);
+
+        // ========== PREVENT FOUC ==========
+        document.body.style.visibility = 'visible';
+        document.body.style.opacity = '1';
+    </script>
+</body>
+</html>
